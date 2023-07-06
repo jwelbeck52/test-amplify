@@ -30,13 +30,13 @@ export class AmplifyInfraStack extends cdk.Stack {
     // Part 2 - Creation of the Amplify Application
     const amplifyApp = new amplify.App(this, "sample-react-app ", {
       sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
-        owner: "[Repository-Owner]",
-        repository: "[Repository-Name]",
-        oauthToken: cdk.SecretValue.secretsManager("[Secret-Name]", {
-          jsonField: "[Secret-Key]",
+        owner: "jwelbeck52",
+        repository: "jwelbeck52/test-amplify",
+        oauthToken: cdk.SecretValue.secretsManager("GITHUB_AUTH", {
+          jsonField: "Github_PAT",
         }),
       }),
     });
-    const masterBranch = amplifyApp.addBranch("master");
+    const masterBranch = amplifyApp.addBranch("main");
   }
 }
